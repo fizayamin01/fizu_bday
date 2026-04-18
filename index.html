@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Cutie 💖</title>
+
+<style>
+body{
+  margin:0;
+  font-family:sans-serif;
+  text-align:center;
+  background:linear-gradient(#ff9a9e,#fad0c4);
+  color:white;
+  overflow:hidden;
+}
+
+/* screens */
+.screen{margin-top:100px;}
+.hidden{display:none;}
+
+/* buttons */
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:10px;
+  margin:10px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+#yes{background:green;color:white;}
+#no{background:red;color:white;position:absolute;}
+
+/* gift */
+.gift{
+  font-size:100px;
+  cursor:pointer;
+}
+
+/* letter */
+#letter{
+  background:white;
+  color:black;
+  margin:20px;
+  padding:20px;
+  border-radius:15px;
+  max-width:700px;
+  margin:auto;
+  text-align:left;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCREEN 1 -->
+<div id="s1" class="screen">
+  <h1>HAPPY BIRTHDAY CUTIE 🥰</h1>
+  <p>Do you want to open your gift?</p>
+
+  <button id="yes" onclick="goGift()">YES</button>
+  <button id="no" onclick="moveNo()">NO</button>
+</div>
+
+<!-- SCREEN 2 (gift) -->
+<div id="s2" class="hidden screen">
+  <div class="gift" onclick="openGift()">🎁</div>
+  <p>Click the gift 🎀</p>
+</div>
+
+<!-- SCREEN 3 -->
+<div id="s3" class="hidden screen">
+  <h1>🎉 HAPPY BIRTHDAY 🎉</h1>
+  <p>There is something for you 💖</p>
+
+  <button onclick="openLetter()">Open 💌</button>
+</div>
+
+<!-- LETTER -->
+<div id="s4" class="hidden">
+  <div id="letter"></div>
+</div>
+
+<script>
+
+let size=1;
+
+/* NO button trap */
+function moveNo(){
+  let no=document.getElementById("no");
+  let yes=document.getElementById("yes");
+
+  size+=0.3;
+  yes.style.transform="scale("+size+")";
+
+  no.style.top=Math.random()*80+"vh";
+  no.style.left=Math.random()*80+"vw";
+}
+
+/* YES click */
+function goGift(){
+  document.getElementById("s1").classList.add("hidden");
+  document.getElementById("s2").classList.remove("hidden");
+}
+
+/* open gift */
+function openGift(){
+  document.getElementById("s2").classList.add("hidden");
+  document.getElementById("s3").classList.remove("hidden");
+}
+
+/* open letter */
+function openLetter(){
+  document.getElementById("s3").classList.add("hidden");
+  document.getElementById("s4").classList.remove("hidden");
+
+  let text=`Happyyyy Birthdayyyyy my Fizuuuu 🥺🎉🎂💖✨
+
+Today is all about you, my beautiful soul 💕🌸 and I just want to say that you are the most precious person in my life 😭🫶 You’re not just my best friend… you’re my safe place, my happiness, my comfort, my everything 🥹❤️
+
+I honestly don’t have enough words to explain how much you mean to me 💫 Every moment with you is so special, every laugh, every memory, every little thing we share means the world to me 💖🌈
+
+Whenever I feel low, you’re the one who lifts me up 🥺💞 Your smile is my favorite thing in the whole world 😊✨ and your presence makes everything feel better 💗
+
+I pray that your life is always filled with happiness, love, success, and all the beautiful things you truly deserve 🤲💝🌷 May all your dreams come true and may you always keep smiling like this 😍🌟
+
+And no matter what happens, I’ll always be right here with you 🤝💖 through every up and down, every laugh and every tear 🥹💕
+
+I love you sooo sooo much my Fizuuuu 😭❤️✨
+Once again, Happy Birthday meri jaan 🎂👑🎊💖💫`;
+
+  let i=0;
+  let box=document.getElementById("letter");
+
+  function type(){
+    if(i<text.length){
+      box.innerHTML+=text.charAt(i);
+      i++;
+      setTimeout(type,20);
+    }
+  }
+  type();
+}
+
+</script>
+
+</body>
+  </html>
